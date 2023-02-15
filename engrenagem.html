@@ -7,7 +7,8 @@
     <title>engrenagem</title>
 
     <style>
-        .minha_engrenagem{
+        .minha_engrenagem
+        {
         position: absolute;
         top: 0px;
         left: 0px;
@@ -20,10 +21,30 @@
 
             100% { rotate: 360deg; }
         }
+
+        .minha_engrenagem2
+        {
+        position: absolute;
+        top: 120px;
+        left: 450px;
+        animation: engrena2 5s infinite linear;
+        rotate: 0deg;
+        }
+
+        @keyframes engrena2
+        {
+            0% { rotate: 360deg; }
+
+            100% { rotate: 0deg; }
+        }
+
     </style>
+
     
 </head>
 <body>
     <img src="engrenagem.png" class="minha_engrenagem">
+
+    <img src="engrenagem2.png" class="minha_engrenagem2">
 </body>
 </html>
