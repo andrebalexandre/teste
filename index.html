@@ -1,97 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro de Alunos</title>
-    <link rel="stylesheet" href="index.css">
-
+    <title>teste2</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-
-
-    <form action="" method="post" id="form1">
-            <br>
-
-            <div class="okay"  id="imageDiv"> 
-
-                <img class="okay2"  id="okay" src="okay.png">
-
-            </div>
-
-              <legend> <b>DATA</b></legend>
-
-                <input class="caixa2" type="date" name="data"><BR>
-                <br>
-
-                <legend> <b>SEXO</b></legend>
-                
-                <input class="caixinha" type="radio" id="Feminino" name="sexo" value="Feminino"> &nbsp; FEMININO <br> 
-                <input class="caixinha" type="radio" id="Masculino" name="sexo" value="Masculino"> &nbsp; MASCULINO <br>
-                  <br>
-
-                <legend> <b>NOME HOSPITAL</b></legend>
-
-                <input class="caixa2" type="text" name="nome_hospital" PLACEHOLDER="nome">
-
-                <BR>
-                  <div class="ni"> <legend> <b>PACIENTE:</b></legend>
-
-                <input class="caixa2" type="text" name="NOMEPAC" PLACEHOLDER="nome">
-
-                <input class="caixa" type="number" name="IDADEPAC" PLACEHOLDER="idade"><legend>
-                </div> 
-                <input class="caixa2" type="number" name="CPFpac" PLACEHOLDER="rg/cpf">
-
-                <input maxlength="14" class="caixa3" type="number" id="telefone" name="telefone" PLACEHOLDER="fone">
-
-        <input type="button" name="enviar" value="Enviar" onclick="ajax();" meu deus do céu/>
-      
-
-
-
+    <form id="meuFormulario">
+        <input type="checkbox" name="opcao1" value="Opção 1"> falar 
+        <input type="checkbox" name="opcao2" value="Opção 2"> não falar 
+        
+        <input type="button" value="Enviar" onclick="enviarFormulario()">
     </form>
 
+    <script>
+        function enviarFormulario() {
+            // Serialize o formulário para obter os dados em formato de string
+            var formData = $('#meuFormulario').serialize();
 
-    <br> <br>
-
-
-</body>
-<script type="text/javascript" src="jquery-1.8.2.min.js"></script>
-<script type="text/javascript">
-    function ajax(){
-            
-        var dados = $('#form1').serialize();
-
+            // Realize a solicitação AJAX para enviar os dados para o servidor
             $.ajax({
-                type: "POST",
-                url: "arquivo.php",
-                data: dados,
-                dataType: 'json',
-                                
-                success: function(meu_json)
-                {
-                    okay.style.display="block"
-                    var valores = meu_json;          // Vem do arquivo.php
-                    var lista = valores.empregados;  // Pega os dados dos "empregados"
-                  
+                type: "POST", // Método HTTP (ou "GET" se preferir)
+                url: "teste.php", // URL para onde enviar os dados
+                data: formData,
+                success: function(response) {
+                    // Ações a serem executadas em caso de sucesso
+                    console.log("Dados enviados com sucesso");
+                    console.log(response);
                 },
-                error: function(xhr, status, error) {
-                    // Aqui poderíamos preencher uma <div> com o innerHTML por exemplo
-                    console.error('Ocorreu um erro ao enviar os dados: ' + error);
-                },
-                beforeSend: function(xhr) {
-                    // Faz algo antes do envio, como exibir uma animação por exemplo.
-                },
-                complete: function(xhr, status) {
-                    // Faz algo após a conclusão, como ocultar uma animação por exemplo. 
-                    // Vai ser executado mesmo se ocorrer um erro.
-                },
-                timeout: 5000    // Define um tempo limite de 5 segundos (5000 milissegundos)
+                error: function(error) {
+                    // Ações a serem executadas em caso de erro
+                    console.log("Ocorreu um erro ao enviar os dados");
+                    console.log(error);
+                }
             });
-            
-            
         }
-</script>
+    </script>
+</body>
 </html>

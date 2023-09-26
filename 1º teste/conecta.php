@@ -11,6 +11,4 @@
         echo("ERRO NA CONEXÃO: <br>".$erro->getMessage());
     }
 
-    
-
 ?>
