@@ -7,7 +7,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
-    <form id="meuFormulario">
+    <form  action="teste.php" id="meuFormulario" method="post">
         <input type="checkbox" name="opcao1" value="Opção 1"> falar 
         <input type="checkbox" name="opcao2" value="Opção 2"> não falar 
         
@@ -16,10 +16,12 @@
 
     <script>
         function enviarFormulario() {
+
             // Serialize o formulário para obter os dados em formato de string
             var formData = $('#meuFormulario').serialize();
 
             // Realize a solicitação AJAX para enviar os dados para o servidor
+
             $.ajax({
                 type: "POST", // Método HTTP (ou "GET" se preferir)
                 url: "teste.php", // URL para onde enviar os dados
